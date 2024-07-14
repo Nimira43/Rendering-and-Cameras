@@ -15,7 +15,6 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
 
 window.addEventListener('resize', () => {
-  //camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
   renderer.setSize(window.innerWidth, window.innerHeight)
 })
@@ -33,9 +32,6 @@ document.body.appendChild(stats.dom)
 const gui = new GUI()
 
 const cameraFolder = gui.addFolder('Camera')
-// cameraFolder.add(camera.position, 'x', -10, 10)
-// cameraFolder.add(camera.position, 'y', -10, 10)
-// cameraFolder.add(camera.position, 'z', -10, 10)
 cameraFolder.add(camera, 'left', -10, 0).onChange(() => {
   camera.updateProjectionMatrix()
 })
@@ -58,11 +54,7 @@ cameraFolder.open()
 
 function animate() {
   requestAnimationFrame(animate)
-
-  //camera.lookAt(0, 0.5, 0)
-
   renderer.render(scene, camera)
-
   stats.update()
 }
 
